@@ -56,6 +56,12 @@ public class CodingProblemPractice {
 		bst.remove(5);
 		bst.print();
 		
+		System.out.println("------ BST Second Max -----");
+		bst.insert(9);
+		bst.insert(10);
+		bst.print();
+		System.out.println("Second max: " + bst.findSecondMax());
+		
 		System.out.println("------ BST Contains Test -----");
 		System.out.println("Contains 5: " + bst.contains(5));
 		System.out.println("Contains 11: " + bst.contains(11));
