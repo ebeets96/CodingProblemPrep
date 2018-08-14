@@ -1,5 +1,5 @@
 
-public class Sort {
+public class QuickSort {
 	
 	public static <T extends Comparable<T>> void quickSort (T[] arr) {
 		quickSort(arr, 0, arr.length - 1);
@@ -22,7 +22,7 @@ public class Sort {
 	}
 	
 	public static <T extends Comparable<T>> int partition (T[] arr, int low, int high) {
-		T pivot = arr[high];
+		T pivot = arr[(low + high) / 2];
 		int i = low;
 		int j = high;
 		
@@ -40,8 +40,8 @@ public class Sort {
 			//Swap them if i < j
 			if (i <= j) {
 				swap(arr, i, j);
-                i++;
-                j--;
+				i++;
+				j--;
 			}
 		}
 		
