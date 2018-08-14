@@ -32,13 +32,44 @@ public class BST<T extends Comparable<T>> {
 	private boolean containsHelper (T item, BSTNode<T> tree) {
 		if(tree == null) {
 			return false;
-		} else if(tree.value.equals(item)) {
-			return true;
-		} else if(item.compareTo(tree.value) < 0)
+		} else if(item.compareTo(tree.value) < 0) {
 			return containsHelper(item, tree.left);
-		else {
+		} else if(item.compareTo(tree.value) > 0) {
 			return containsHelper(item, tree.right);
+		} else {
+			return true;
+		} 
+	}
+	
+	public void remove (T item) {
+		root = removeHelper(item, root);
+	}
+	
+	private BSTNode<T> removeHelper (T item, BSTNode<T> tree){
+		if(tree == null) {
+			return tree;
+		} else if(item.compareTo(tree.value) < 0) {
+			tree.left = removeHelper(item, tree.left);
+		} else if(item.compareTo(tree.value) > 0){
+			tree.right = removeHelper(item, tree.right);
+		} else {
+			if(tree.left == null)
+				return tree.right;
+			
+			if(tree.right == null)
+				return tree.left;
+			
+			tree.value = findMax(tree.left);
+			tree.left = removeHelper(tree.value, tree.left);
 		}
+		return tree;
+	}
+	
+	private T findMax(BSTNode<T> tree) {
+		if(tree.right == null)
+			return tree.value;
+		
+		return findMax(tree.right);
 	}
 	
 	public static class BSTNode<T> {

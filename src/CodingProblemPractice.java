@@ -47,11 +47,13 @@ public class CodingProblemPractice {
 	}
 	
 	private static void testBST(Integer[] arr) {
-		System.out.println("------ BST Insert Test -----");
+		System.out.println("------ BST Insert/Delete Test -----");
 		BST<Integer> bst = new BST<>();
 		for(Integer i: arr) {
 			bst.insert(i);
 		}
+		bst.print();
+		bst.remove(5);
 		bst.print();
 		
 		System.out.println("------ BST Contains Test -----");
