@@ -72,6 +72,24 @@ public class BST<T extends Comparable<T>> {
 		return findMax(tree.right);
 	}
 	
+	
+	BSTNode<T> maxParent = root;
+	private BSTNode<T> findMaxNode(BSTNode<T> tree) {
+		if(tree.right == null)
+			return tree;
+		
+		maxParent = tree;
+		return findMaxNode(tree.right);
+	}
+	
+	public T findSecondMax() {
+		BSTNode<T> maxNode = findMaxNode(root);
+		if(maxNode.left != null)
+			return findMax(maxNode.left);
+		
+		return maxParent.value;
+	}
+	
 	public static class BSTNode<T> {
 		public T value;
 		public BSTNode<T> left;
