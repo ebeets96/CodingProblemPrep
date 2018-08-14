@@ -5,6 +5,7 @@ public class CodingProblemPractice {
 	public static void main(String[] args) {
 		Integer[] arr = {3,5,1,8,4,5,6,11};
 		testQuickSort(arr);
+		
 		Integer[] arr1 = Arrays.copyOf(arr, arr.length);
 		testMergeSort(arr1);
 	}
